@@ -1,5 +1,5 @@
 const searchInputEl = $("#ingredientSearchInput");
-const searchEl = $("#search");
+const searchEl = jQuery("#search");
 const ingredientsListUrl =
   "https://www.themealdb.com/api/json/v1/1/list.php?i=list";
 let ingredients = [];
@@ -39,7 +39,7 @@ function handleSearch(event) {
 
 console.log(searchEl);
 createIngredientsList();
-searchEl.addEventListener("click", handleSearch);
+searchEl.on("click", handleSearch);
 
 // searchEl.addEventListener("click", handleSearch);
 
