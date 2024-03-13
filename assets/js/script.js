@@ -39,8 +39,4 @@ function handleSearch(event) {
 
 console.log(searchEl);
 createIngredientsList();
-searchEl.addEventListener("click", handleSearch);
-
-// searchEl.addEventListener("click", handleSearch);
-
-// www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast
+searchEl.on("click", handleSearch);
