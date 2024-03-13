@@ -39,7 +39,7 @@ function handleSearch(event) {
 
 console.log(searchEl);
 createIngredientsList();
-searchEl.addEventListener("click", handleSearch);
+searchEl.on("click", handleSearch);
 
 // searchEl.addEventListener("click", handleSearch);
 
