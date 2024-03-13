@@ -38,9 +38,10 @@ function handleSearch(event) {
       for (let i = 0; i < data.meals.length; i++) {
         const receiptsEl = $("<div>");
         const mealTitleEl = $("<div>");
-        const thumbnailEl = $("<div>");
+        const thumbnailEl = $("<img>");
+        const mealIdEl = $("div");
         mealTitleEl.text(data.meals[i].strMeal);
-        thumbnailEl.text(data.meals[i].strMealThumb);
+        thumbnailEl.attr("src", data.meals[i].strMealThumb);
         receiptsEl.append(mealTitleEl);
         receiptsEl.append(thumbnailEl);
         receiptContainer.append(receiptsEl);
