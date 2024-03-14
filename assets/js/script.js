@@ -288,6 +288,7 @@ function handleSearch(event) {
     });
 }
 
+// this appears to be working
 function createCocktailList() {
   fetch(cocktailListUrl)
     .then(function (response) {
@@ -307,36 +308,37 @@ function createCocktailList() {
     });
 }
 
-function handleCocktailSearch(event) {
-  event.preventDefault();
+// This function needs work still
+// function handleCocktailSearch(event) {
+//   event.preventDefault();
 
-  const cocktailSearchUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailInputEL.val()}`;
+//   const cocktailSearchUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailInputEL.val()}`;
 
-  fetch(cocktailSearchUrl)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      for (let i = 0; i < data.drinks.length; i++) {
-        const receiptsEl = $("<div>");
-        const drinkTitleEl = $("<div>");
-        const thumbnailEl = $("<img>");
-        const modalEl = $("<div>");
-        const drinkUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${data.drinks[i].idDrink}`;
+//   fetch(cocktailSearchUrl)
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       for (let i = 0; i < data.drinks.length; i++) {
+//         const receiptsEl = $("<div>");
+//         const drinkTitleEl = $("<div>");
+//         const thumbnailEl = $("<img>");
+//         const modalEl = $("<div>");
+//         const drinkUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${data.drinks[i].idDrink}`;
 
-        drinkTitleEl.text(data.drinks[i].strDrink);
-        thumbnailEl.attr("src", data.drinks[i].strDrinkThumb);
-        receiptsEl.append(drinkTitleEl);
-        receiptsEl.append(thumbnailEl);
-        receiptContainer.append(receiptsEl);
-        receiptContainer.append(modalEl);
+//         drinkTitleEl.text(data.drinks[i].strDrink);
+//         thumbnailEl.attr("src", data.drinks[i].strDrinkThumb);
+//         receiptsEl.append(drinkTitleEl);
+//         receiptsEl.append(thumbnailEl);
+//         receiptContainer.append(receiptsEl);
+//         receiptContainer.append(modalEl);
 
-        createModalElements(drinkUrl, modalEl);
-      }
-    });
-}
+//         createModalElements(drinkUrl, modalEl);
+//       }
+//     });
+// }
 
 createCocktailList();
-cocktailSearchEl.on("click", handleCocktailSearch);
+// cocktailSearchEl.on("click", handleCocktailSearch); // waiting to complete function
 createIngredientsList();
 searchEl.on("click", handleSearch);
