@@ -4,6 +4,11 @@ const ingredientsListUrl =
   "https://www.themealdb.com/api/json/v1/1/list.php?i=list";
 let ingredients = [];
 const receiptContainer = $("#receiptContainer");
+const cocktailInputEL = $("#cocktailSearchInput");
+const cocktailSearchEl = $("#Cocktail");
+const cocktailListUrl =
+  "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list";
+let drinkIngredients = [];
 
 function createModalElements(mealUrl, modalEl) {
   fetch(mealUrl)
@@ -283,5 +288,55 @@ function handleSearch(event) {
     });
 }
 
+function createCocktailList() {
+  fetch(cocktailListUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      for (i = 0; i < data.drinks.length; i++) {
+        drinkIngredient = data.drinks[i].strIngredient1;
+        drinkIngredients = drinkIngredients.concat(drinkIngredient);
+      }
+      $(function () {
+        const drinkList = drinkIngredients;
+        $("#cocktailSearchInput").autocomplete({
+          source: drinkList,
+        });
+      });
+    });
+}
+
+function handleCocktailSearch(event) {
+  event.preventDefault();
+
+  const cocktailSearchUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailInputEL.val()}`;
+
+  fetch(cocktailSearchUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      for (let i = 0; i < data.drinks.length; i++) {
+        const receiptsEl = $("<div>");
+        const drinkTitleEl = $("<div>");
+        const thumbnailEl = $("<img>");
+        const modalEl = $("<div>");
+        const drinkUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${data.drinks[i].idDrink}`;
+
+        drinkTitleEl.text(data.drinks[i].strDrink);
+        thumbnailEl.attr("src", data.drinks[i].strDrinkThumb);
+        receiptsEl.append(drinkTitleEl);
+        receiptsEl.append(thumbnailEl);
+        receiptContainer.append(receiptsEl);
+        receiptContainer.append(modalEl);
+
+        createModalElements(drinkUrl, modalEl);
+      }
+    });
+}
+
+createCocktailList();
+cocktailSearchEl.on("click", handleCocktailSearch);
 createIngredientsList();
 searchEl.on("click", handleSearch);
