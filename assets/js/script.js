@@ -16,217 +16,217 @@ function createModalElements(mealUrl, modalEl) {
       const instructionsEl = $("<p>");
       instructionsEl.text(data.meals[0].strInstructions);
 
-      for (i = 1; i < 21; i++) {
-        if (`data.meals[0].strIngredient${i}` !== "") {
-          const ingredientLi = $("<li>");
+      // for (i = 1; i < 21; i++) {
+      //   if (`data.meals[0].strIngredient${i}` !== "") {
+      //     const ingredientLi = $("<li>");
 
-          const measurementText = `data.meals[0].strMeasure${i}`;
-          const ingredientText = `data.meals[0].strIngredient${i}`;
+      //     const measurementText = `data.meals[0].strMeasure${i}`;
+      //     const ingredientText = `data.meals[0].strIngredient${i}`;
 
-          ingredientLi.text(`${measurementText} ${ingredientText}`);
-          ingredientsListEl.append(ingredientLi);
-        }
+      //     ingredientLi.text(`${measurementText} ${ingredientText}`);
+      //     ingredientsListEl.append(ingredientLi);
+      //   }
+      // }
+      if (
+        data.meals[0].strIngredient1 !== "" &&
+        data.meals[0].strIngredient1 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure1} ${data.meals[0].strIngredient1}`
+        );
+        ingredientsListEl.append(ingredientLi);
       }
-      // if (
-      //   data.meals[0].strIngredient1 !== "" &&
-      //   data.meals[0].strIngredient1 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure1} ${data.meals[0].strIngredient1}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient2 !== "" &&
-      //   data.meals[0].strIngredient2 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure2} ${data.meals[0].strIngredient2}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient3 !== "" &&
-      //   data.meals[0].strIngredient3 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure3} ${data.meals[0].strIngredient3}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient4 !== "" &&
-      //   data.meals[0].strIngredient4 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure4} ${data.meals[0].strIngredient4}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient5 !== "" &&
-      //   data.meals[0].strIngredient5 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure5} ${data.meals[0].strIngredient5}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient6 !== "" &&
-      //   data.meals[0].strIngredient6 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure6} ${data.meals[0].strIngredient6}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient7 !== "" &&
-      //   data.meals[0].strIngredient7 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure7} ${data.meals[0].strIngredient7}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient8 !== "" &&
-      //   data.meals[0].strIngredient8 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure8} ${data.meals[0].strIngredient8}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient9 !== "" &&
-      //   data.meals[0].strIngredient9 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure9} ${data.meals[0].strIngredient9}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient10 !== "" &&
-      //   data.meals[0].strIngredient10 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure10} ${data.meals[0].strIngredient10}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient11 !== "" &&
-      //   data.meals[0].strIngredient11 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure11} ${data.meals[0].strIngredient11}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient12 !== "" &&
-      //   data.meals[0].strIngredient12 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure12} ${data.meals[0].strIngredient12}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient13 !== "" &&
-      //   data.meals[0].strIngredient13 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure13} ${data.meals[0].strIngredient13}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient14 !== "" &&
-      //   data.meals[0].strIngredient14 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure14} ${data.meals[0].strIngredient14}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient15 !== "" &&
-      //   data.meals[0].strIngredient15 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure15} ${data.meals[0].strIngredient15}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient16 !== "" &&
-      //   data.meals[0].strIngredient16 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure16} ${data.meals[0].strIngredient16}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient17 !== "" &&
-      //   data.meals[0].strIngredient17 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure17} ${data.meals[0].strIngredient17}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient18 !== "" &&
-      //   data.meals[0].strIngredient18 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure18} ${data.meals[0].strIngredient18}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient19 !== "" &&
-      //   data.meals[0].strIngredient19 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure19} ${data.meals[0].strIngredient19}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
-      // if (
-      //   data.meals[0].strIngredient20 !== "" &&
-      //   data.meals[0].strIngredient20 !== null
-      // ) {
-      //   const ingredientLi = $("<li>");
-      //   ingredientLi.text(
-      //     `${data.meals[0].strMeasure20} ${data.meals[0].strIngredient20}`
-      //   );
-      //   ingredientsListEl.append(ingredientLi);
-      // }
+      if (
+        data.meals[0].strIngredient2 !== "" &&
+        data.meals[0].strIngredient2 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure2} ${data.meals[0].strIngredient2}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient3 !== "" &&
+        data.meals[0].strIngredient3 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure3} ${data.meals[0].strIngredient3}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient4 !== "" &&
+        data.meals[0].strIngredient4 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure4} ${data.meals[0].strIngredient4}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient5 !== "" &&
+        data.meals[0].strIngredient5 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure5} ${data.meals[0].strIngredient5}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient6 !== "" &&
+        data.meals[0].strIngredient6 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure6} ${data.meals[0].strIngredient6}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient7 !== "" &&
+        data.meals[0].strIngredient7 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure7} ${data.meals[0].strIngredient7}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient8 !== "" &&
+        data.meals[0].strIngredient8 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure8} ${data.meals[0].strIngredient8}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient9 !== "" &&
+        data.meals[0].strIngredient9 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure9} ${data.meals[0].strIngredient9}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient10 !== "" &&
+        data.meals[0].strIngredient10 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure10} ${data.meals[0].strIngredient10}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient11 !== "" &&
+        data.meals[0].strIngredient11 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure11} ${data.meals[0].strIngredient11}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient12 !== "" &&
+        data.meals[0].strIngredient12 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure12} ${data.meals[0].strIngredient12}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient13 !== "" &&
+        data.meals[0].strIngredient13 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure13} ${data.meals[0].strIngredient13}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient14 !== "" &&
+        data.meals[0].strIngredient14 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure14} ${data.meals[0].strIngredient14}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient15 !== "" &&
+        data.meals[0].strIngredient15 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure15} ${data.meals[0].strIngredient15}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient16 !== "" &&
+        data.meals[0].strIngredient16 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure16} ${data.meals[0].strIngredient16}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient17 !== "" &&
+        data.meals[0].strIngredient17 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure17} ${data.meals[0].strIngredient17}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient18 !== "" &&
+        data.meals[0].strIngredient18 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure18} ${data.meals[0].strIngredient18}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient19 !== "" &&
+        data.meals[0].strIngredient19 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure19} ${data.meals[0].strIngredient19}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
+      if (
+        data.meals[0].strIngredient20 !== "" &&
+        data.meals[0].strIngredient20 !== null
+      ) {
+        const ingredientLi = $("<li>");
+        ingredientLi.text(
+          `${data.meals[0].strMeasure20} ${data.meals[0].strIngredient20}`
+        );
+        ingredientsListEl.append(ingredientLi);
+      }
 
       modalEl.append(ingredientsListEl);
       modalEl.append(instructionsEl);
@@ -272,10 +272,21 @@ function handleSearch(event) {
         const thumbnailEl = $("<img>");
         const modalEl = $("<div>");
         const mealUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${data.meals[i].idMeal}`;
+        const favoriteEl = $("<input>");
+        const favoriteLabelEl = $("<label>");
+        const lineBrEl = $("<br>");
 
+        favoriteEl.attr("type", "checkbox");
+        favoriteEl.attr("class", "favorite");
+        favoriteEl.attr("data-mealId", data.meals[i].idMeal);
+        favoriteLabelEl.attr("for", "favorite");
+        favoriteLabelEl.text("Save to Favorites");
         mealTitleEl.text(data.meals[i].strMeal);
         thumbnailEl.attr("src", data.meals[i].strMealThumb);
         receiptsEl.append(mealTitleEl);
+        receiptsEl.append(favoriteEl);
+        receiptsEl.append(favoriteLabelEl);
+        receiptsEl.append(lineBrEl);
         receiptsEl.append(thumbnailEl);
         receiptContainer.append(receiptsEl);
         receiptContainer.append(modalEl);
