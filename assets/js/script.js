@@ -24,8 +24,10 @@ function createModalElements(mealUrl, modalEl) {
       // for (i = 1; i < 21; i++) {
       //   if (`data.meals[0].strIngredient${i}` !== "") {
       //     const ingredientLi = $("<li>");
+
       //     const measurementText = `data.meals[0].strMeasure${i}`;
       //     const ingredientText = `data.meals[0].strIngredient${i}`;
+
       //     ingredientLi.text(`${measurementText} ${ingredientText}`);
       //     ingredientsListEl.append(ingredientLi);
       //   }
@@ -275,10 +277,21 @@ function handleSearch(event) {
         const thumbnailEl = $("<img>");
         const modalEl = $("<div>");
         const mealUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${data.meals[i].idMeal}`;
+        const favoriteEl = $("<input>");
+        const favoriteLabelEl = $("<label>");
+        const lineBrEl = $("<br>");
 
+        favoriteEl.attr("type", "checkbox");
+        favoriteEl.attr("class", "favorite");
+        favoriteEl.attr("data-mealId", data.meals[i].idMeal);
+        favoriteLabelEl.attr("for", "favorite");
+        favoriteLabelEl.text("Save to Favorites");
         mealTitleEl.text(data.meals[i].strMeal);
         thumbnailEl.attr("src", data.meals[i].strMealThumb);
         receiptsEl.append(mealTitleEl);
+        receiptsEl.append(favoriteEl);
+        receiptsEl.append(favoriteLabelEl);
+        receiptsEl.append(lineBrEl);
         receiptsEl.append(thumbnailEl);
         receiptContainer.append(receiptsEl);
         receiptContainer.append(modalEl);
