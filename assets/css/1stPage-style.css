@@ -6,31 +6,44 @@ body {
   background-image: url("../images/davey-gravy-d-tWHUbuEcY-unsplash-reduced.jpg");
 }
 
-h1.mt-5 {
-  font-size: 3rem;
-  color: white;
+.mt-5 {
+  font-size: 5rem;
+  color: darkgreen;
+  font-weight: bold;
 }
-s main {
-  display: flex;
+main {
   margin: 0;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  align-items: center;
   text-align: center;
 }
 
-section {
-  font-size: 2rem;
-  text-align: justify;
+.enterHere {
   color: white;
+  margin-top: 4rem;
+}
+
+section {
+  font-size: 3.5rem;
+  color: white;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+p {
+  margin-bottom: 4rem;
 }
 
 .d-flex {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
+  height: 100vh;
 }
 
-.search {
-  width: 10em;
+.bonAppetit {
+  color: white;
+  font-size: 4rem;
+  font-weight: bold;
+  margin-top: 4rem;
 }
