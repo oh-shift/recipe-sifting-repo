@@ -7,6 +7,17 @@ body {
   padding-bottom: 3rem;
   color: rgb(var(--bs-tertiary-color-rgb));
 }
+/* Light and Dark Mode Button
+-------------------------------------------------- */
+.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.dark-mode {
+  background-color: #333333;
+  color: #ffffff;
+}
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -14,6 +25,7 @@ body {
 /* Carousel base class */
 .carousel {
   margin-bottom: 4rem;
+  width: 80%;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -47,9 +59,12 @@ body {
 }
 
 .img_recipe {
+  /* display: block; */
   width: 100%;
   height: 100%;
   opacity: 0.8;
+  /* margin-right: auto; */
+  /* margin-left: auto; */
 }
 
 .img_favorites {
