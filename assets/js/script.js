@@ -9,6 +9,8 @@ const cocktailSearchEl = $("#Cocktail");
 const cocktailListUrl =
   "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list";
 let drinkIngredients = [];
+const landingPageEl = $("#origin");
+const drinkContainer = $("#drinkContainer");
 
 function createDrinksModalElements(drinkUrl, modalDrinksEl) {
   fetch(drinkUrl)
@@ -89,6 +91,7 @@ function createIngredientsList() {
 
 function handleSearch(event) {
   event.preventDefault();
+  console.log(event);
 
   const searchUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInputEl.val()}`;
   const cocktailSearchUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${cocktailInputEL.val()}`;
@@ -100,31 +103,54 @@ function handleSearch(event) {
     .then(function (data) {
       for (let i = 0; i < data.meals.length; i++) {
         const receiptsEl = $("<div>");
-        const mealTitleEl = $("<div>");
         const thumbnailEl = $("<img>");
-        const modalEl = $("<div>");
-        const mealUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${data.meals[i].idMeal}`;
-        const favoriteEl = $("<input>");
-        const favoriteLabelEl = $("<label>");
-        const lineBrEl = $("<br>");
+        const innerReceiptsEl = $("<div>");
+        const innerInnerReceiptsEl = $("<div>");
+        const mealTitleEl = $("<h1>");
+        const modalButtonPEl = $("<p>");
+        const modalButtonAEl = $("<a>");
+        // const modalEl = $("<div>");
+        // const mealUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${data.meals[i].idMeal}`;
+        // const favoriteEl = $("<input>");
+        // const favoriteLabelEl = $("<label>");
+        // const lineBrEl = $("<br>");
 
-        favoriteEl.attr("type", "checkbox");
-        favoriteEl.attr("class", "favorite");
-        favoriteEl.attr("data-mealId", data.meals[i].idMeal);
-        favoriteLabelEl.attr("for", "favorite");
-        favoriteLabelEl.text("Save to Favorites");
-        mealTitleEl.text(data.meals[i].strMeal);
+        receiptsEl.attr("class", "carousel-item");
+        receiptsEl.attr("id", `index${i}`);
+        // favoriteEl.attr("type", "checkbox");
+        // favoriteEl.attr("class", "favorite");
+        // favoriteEl.attr("data-mealId", data.meals[i].idMeal);
+        // favoriteLabelEl.attr("for", "favorite");
+        // favoriteLabelEl.text("Save to Favorites");
         thumbnailEl.attr("src", data.meals[i].strMealThumb);
-        receiptsEl.append(mealTitleEl);
-        receiptsEl.append(favoriteEl);
-        receiptsEl.append(favoriteLabelEl);
-        receiptsEl.append(lineBrEl);
-        receiptsEl.append(thumbnailEl);
-        receiptContainer.append(receiptsEl);
-        receiptContainer.append(modalEl);
+        thumbnailEl.attr("class", "img_recipe");
+        thumbnailEl.attr("alt", data.meals[i].strMeal);
+        innerReceiptsEl.attr("class", "container");
+        innerInnerReceiptsEl.attr("class", "carousel-caption text-start");
+        mealTitleEl.text(data.meals[i].strMeal);
+        modalButtonAEl.attr("class", "btn btn-lg btn-primary");
+        modalButtonAEl.attr("href", "#");
+        modalButtonAEl.text("Recipe Details");
 
-        createModalElements(mealUrl, modalEl);
+        // receiptsEl.append(favoriteEl);
+        // receiptsEl.append(favoriteLabelEl);
+        // receiptsEl.append(lineBrEl);
+        modalButtonPEl.append(modalButtonAEl);
+        innerInnerReceiptsEl.append(mealTitleEl);
+        innerInnerReceiptsEl.append(modalButtonPEl);
+        innerReceiptsEl.append(innerInnerReceiptsEl);
+        receiptsEl.append(thumbnailEl);
+        receiptsEl.append(innerReceiptsEl);
+        receiptContainer.append(receiptsEl);
+
+        receiptsEl.removeClass("active");
+        // receiptContainer.append(modalEl);
+
+        // createModalElements(mealUrl, modalEl);
       }
+      landingPageEl.removeClass("active");
+      const redirectEl = $("#index0");
+      redirectEl.attr("class", "carousel-item active");
     });
   fetch(cocktailSearchUrl)
     .then(function (response) {
@@ -132,20 +158,31 @@ function handleSearch(event) {
     })
     .then(function (data) {
       for (let i = 0; i < data.drinks.length; i++) {
-        const receiptsEl = $("<div>");
-        const drinkTitleEl = $("<div>");
-        const thumbnailEl = $("<img>");
-        const modalDrinksEl = $("<div>");
-        const drinkUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${data.drinks[i].idDrink}`;
+        const drinksEl = $("<div>");
+        const drinkTitleEl = $("<h2>");
+        const drinkThumbnailEl = $("<img>");
+        const drinkModalPEl = $("<p>");
+        const drinkModalAEl = $("<a>");
+        // const modalDrinksEl = $("<div>");
+        // const drinkUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${data.drinks[i].idDrink}`;
 
+        drinksEl.attr("class", "col-lg-4");
+        drinkThumbnailEl.attr("src", data.drinks[i].strDrinkThumb);
+        drinkThumbnailEl.attr("class", "img_drink");
         drinkTitleEl.text(data.drinks[i].strDrink);
-        thumbnailEl.attr("src", data.drinks[i].strDrinkThumb);
-        receiptsEl.append(drinkTitleEl);
-        receiptsEl.append(thumbnailEl);
-        receiptContainer.append(receiptsEl);
-        receiptContainer.append(modalDrinksEl);
+        drinkTitleEl.attr("class", "fw-normal");
+        drinkModalAEl.attr("class", "btn btn-secondary");
+        drinkModalAEl.attr("href", "#");
+        drinkModalAEl.text("View Details");
 
-        createDrinksModalElements(drinkUrl, modalDrinksEl);
+        drinkModalPEl.append(drinkModalAEl);
+        drinksEl.append(drinkThumbnailEl);
+        drinksEl.append(drinkTitleEl);
+        drinksEl.append(drinkModalPEl);
+        drinkContainer.append(drinksEl);
+        // receiptContainer.append(modalDrinksEl);
+
+        // createDrinksModalElements(drinkUrl, modalDrinksEl);
       }
     });
 }
