@@ -1,7 +1,49 @@
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
+html {
+  font-size: 62.5%;
+}
 
-main > .container {
-  padding: 60px 15px 0;
+body {
+  background-image: url("../images/davey-gravy-d-tWHUbuEcY-unsplash-reduced.jpg");
+}
+
+.mt-5 {
+  font-size: 5rem;
+  color: darkgreen;
+  font-weight: bold;
+}
+main {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  align-items: center;
+  text-align: center;
+}
+
+.enterHere {
+  color: white;
+  margin-top: 4rem;
+}
+
+section {
+  font-size: 3.5rem;
+  color: white;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+p {
+  margin-bottom: 4rem;
+}
+
+.d-flex {
+  display: block;
+  height: 100vh;
+}
+
+.bonAppetit {
+  color: white;
+  font-size: 4rem;
+  font-weight: bold;
+  margin-top: 4rem;
 }
