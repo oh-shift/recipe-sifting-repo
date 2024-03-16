@@ -120,17 +120,24 @@ function handleSearch(event) {
         const modalFooterEl = $("<div>");
         const modalFooterButtonEl = $("<button>");
         const mealUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${data.meals[i].idMeal}`;
-        // const favoriteEl = $("<input>");
-        // const favoriteLabelEl = $("<label>");
-        // const lineBrEl = $("<br>");
+        const favoriteDivEl = $("<div>");
+        const favoriteEl = $("<input>");
+        const favoriteLabelEl = $("<label>");
 
         receiptsEl.attr("class", "carousel-item");
         receiptsEl.attr("id", `index${i}`);
-        // favoriteEl.attr("type", "checkbox");
-        // favoriteEl.attr("class", "favorite");
-        // favoriteEl.attr("data-mealId", data.meals[i].idMeal);
-        // favoriteLabelEl.attr("for", "favorite");
-        // favoriteLabelEl.text("Save to Favorites");
+        favoriteDivEl.attr("class", "btn-group");
+
+        favoriteDivEl.attr("role", "group");
+        favoriteDivEl.attr("aria-label", "Basic checkbox toggle button group");
+        favoriteEl.attr("type", "checkbox");
+        favoriteEl.attr("class", "btn-check");
+        favoriteEl.attr("id", `btncheck${i}`);
+        favoriteEl.attr("autocomplete", "off");
+        favoriteEl.attr("data-mealId", data.meals[i].idMeal);
+        favoriteLabelEl.attr("for", `btncheck${i}`);
+        favoriteLabelEl.attr("class", "btn btn-outline-primary");
+        favoriteLabelEl.text("❤️");
         thumbnailEl.attr("src", data.meals[i].strMealThumb);
         thumbnailEl.attr("class", "img_recipe");
         thumbnailEl.attr("alt", data.meals[i].strMeal);
@@ -164,10 +171,10 @@ function handleSearch(event) {
         modalFooterButtonEl.attr("class", "btn btn-secondary");
         modalFooterButtonEl.attr("data-bs-dismiss", "modal");
 
-        // receiptsEl.append(favoriteEl);
-        // receiptsEl.append(favoriteLabelEl);
-        // receiptsEl.append(lineBrEl);
         modalButtonPEl.append(modalButtonAEl);
+        favoriteDivEl.append(favoriteEl);
+        favoriteDivEl.append(favoriteLabelEl);
+        innerInnerReceiptsEl.append(favoriteDivEl);
         innerInnerReceiptsEl.append(mealTitleEl);
         innerInnerReceiptsEl.append(modalButtonPEl);
         innerReceiptsEl.append(innerInnerReceiptsEl);
