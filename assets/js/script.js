@@ -11,6 +11,7 @@ const cocktailListUrl =
 let drinkIngredients = [];
 const landingPageEl = $("#origin");
 const drinkContainer = $("#drinkContainer");
+const modalTargetEl = $("#modalTarget");
 
 function createDrinksModalElements(drinkUrl, modalDrinksEl) {
   fetch(drinkUrl)
@@ -39,7 +40,7 @@ function createDrinksModalElements(drinkUrl, modalDrinksEl) {
     });
 }
 
-function createModalElements(mealUrl, modalEl) {
+function createModalElements(mealUrl, modalBodyEl) {
   fetch(mealUrl)
     .then(function (response) {
       return response.json();
@@ -61,8 +62,8 @@ function createModalElements(mealUrl, modalEl) {
           ingredientsListEl.append(ingredientLi);
         }
       }
-      modalEl.append(ingredientsListEl);
-      modalEl.append(instructionsEl);
+      modalBodyEl.append(ingredientsListEl);
+      modalBodyEl.append(instructionsEl);
 
       //create an ul element that then has a list item for each ingredient 1-20 if ingreident # is not empty string
 
@@ -108,9 +109,17 @@ function handleSearch(event) {
         const innerInnerReceiptsEl = $("<div>");
         const mealTitleEl = $("<h1>");
         const modalButtonPEl = $("<p>");
-        const modalButtonAEl = $("<a>");
-        // const modalEl = $("<div>");
-        // const mealUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${data.meals[i].idMeal}`;
+        const modalButtonAEl = $("<button>");
+        const modalEl = $("<div>");
+        const modalDialogEl = $("<div>");
+        const modalContentEl = $("<div>");
+        const modalHeaderEl = $("<div>");
+        const modalTitleEl = $("<h1>");
+        const modalHeaderButtonEl = $("<button>");
+        const modalBodyEl = $("<div>");
+        const modalFooterEl = $("<div>");
+        const modalFooterButtonEl = $("<button>");
+        const mealUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${data.meals[i].idMeal}`;
         // const favoriteEl = $("<input>");
         // const favoriteLabelEl = $("<label>");
         // const lineBrEl = $("<br>");
@@ -129,8 +138,31 @@ function handleSearch(event) {
         innerInnerReceiptsEl.attr("class", "carousel-caption text-start");
         mealTitleEl.text(data.meals[i].strMeal);
         modalButtonAEl.attr("class", "btn btn-lg btn-primary");
+        modalButtonAEl.attr("type", "button");
+        modalButtonAEl.attr("data-bs-toggle", "modal");
+        modalButtonAEl.attr("data-bs-target", `#targetid${i}`);
         modalButtonAEl.attr("href", "#");
         modalButtonAEl.text("Recipe Details");
+        modalEl.attr("class", "modal fade");
+        modalEl.attr("id", `targetid${i}`);
+        modalEl.attr("tabindex", "-1");
+        modalEl.attr("aria-labelledby", `exampleModal${i}Label`);
+        modalEl.attr("aria-hidden", "true");
+        modalDialogEl.attr("class", "modal-dialog");
+        modalContentEl.attr("class", "modal-content");
+        modalHeaderEl.attr("class", "modal-header");
+        modalTitleEl.attr("class", "modal-title fs-5");
+        modalTitleEl.attr("id", `exampleModal${i}Label`);
+        modalTitleEl.text(data.meals[i].strMeal);
+        modalHeaderButtonEl.attr("type", "button");
+        modalHeaderButtonEl.attr("class", "btn-close");
+        modalHeaderButtonEl.attr("data-bs-dismiss", "modal");
+        modalHeaderButtonEl.attr("aria-label", "Close");
+        modalBodyEl.attr("class", "modal-body");
+        modalFooterEl.attr("class", "modal-footer");
+        modalFooterButtonEl.attr("type", "button");
+        modalFooterButtonEl.attr("class", "btn btn-secondary");
+        modalFooterButtonEl.attr("data-bs-dismiss", "modal");
 
         // receiptsEl.append(favoriteEl);
         // receiptsEl.append(favoriteLabelEl);
@@ -142,11 +174,19 @@ function handleSearch(event) {
         receiptsEl.append(thumbnailEl);
         receiptsEl.append(innerReceiptsEl);
         receiptContainer.append(receiptsEl);
+        modalTargetEl.append(modalEl);
+        modalFooterEl.append(modalFooterButtonEl);
+        modalHeaderEl.append(modalTitleEl);
+        modalHeaderEl.append(modalHeaderButtonEl);
+        modalContentEl.append(modalHeaderEl);
+        modalContentEl.append(modalBodyEl);
+        modalContentEl.append(modalFooterEl);
+        modalDialogEl.append(modalContentEl);
+        modalEl.append(modalDialogEl);
 
         receiptsEl.removeClass("active");
-        // receiptContainer.append(modalEl);
 
-        // createModalElements(mealUrl, modalEl);
+        createModalElements(mealUrl, modalBodyEl);
       }
       landingPageEl.removeClass("active");
       const redirectEl = $("#index0");
