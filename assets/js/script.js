@@ -13,7 +13,7 @@ const landingPageEl = $("#origin");
 const drinkContainer = $("#drinkContainer");
 const modalTargetEl = $("#modalTarget");
 
-function createDrinksModalElements(drinkUrl, modalDrinksEl) {
+function createDrinksModalElements(drinkUrl, drinksModalBodyEl) {
   fetch(drinkUrl)
     .then(function (response) {
       return response.json();
@@ -35,8 +35,8 @@ function createDrinksModalElements(drinkUrl, modalDrinksEl) {
           ingredientsListEl.append(ingredientLi);
         }
       }
-      modalDrinksEl.append(ingredientsListEl);
-      modalDrinksEl.append(instructionsEl);
+      drinksModalBodyEl.append(ingredientsListEl);
+      drinksModalBodyEl.append(instructionsEl);
     });
 }
 
@@ -202,27 +202,72 @@ function handleSearch(event) {
         const drinkTitleEl = $("<h2>");
         const drinkThumbnailEl = $("<img>");
         const drinkModalPEl = $("<p>");
-        const drinkModalAEl = $("<a>");
-        // const modalDrinksEl = $("<div>");
-        // const drinkUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${data.drinks[i].idDrink}`;
+        const drinkModalAEl = $("<button>");
+
+        const drinksModalEl = $("<div>");
+        const drinksModalDialogEl = $("<div>");
+        const drinksModalContentEl = $("<div>");
+        const drinksModalHeaderEl = $("<div>");
+        const drinksModalTitleEl = $("<h1>");
+        const drinksModalHeaderButtonEl = $("<button>");
+        const drinksModalBodyEl = $("<div>");
+        const drinksModalFooterEl = $("<div>");
+        const drinksModalFooterButtonEl = $("<button>");
+
+        const drinkUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${data.drinks[i].idDrink}`;
 
         drinksEl.attr("class", "col-lg-4");
         drinkThumbnailEl.attr("src", data.drinks[i].strDrinkThumb);
         drinkThumbnailEl.attr("class", "img_drink");
         drinkTitleEl.text(data.drinks[i].strDrink);
         drinkTitleEl.attr("class", "fw-normal");
+
+        drinkModalAEl.attr("type", "button");
+        drinkModalAEl.attr("data-bs-toggle", "modal");
+        drinkModalAEl.attr("data-bs-target", `#drinkstargetid${i}`);
+
         drinkModalAEl.attr("class", "btn btn-secondary");
         drinkModalAEl.attr("href", "#");
         drinkModalAEl.text("View Details");
+
+        drinksModalEl.attr("class", "modal fade");
+        drinksModalEl.attr("id", `drinkstargetid${i}`);
+        drinksModalEl.attr("tabindex", "-1");
+        drinksModalEl.attr("aria-labelledby", `exampleDrinksModal${i}Label`);
+        drinksModalEl.attr("aria-hidden", "true");
+        drinksModalDialogEl.attr("class", "modal-dialog");
+        drinksModalContentEl.attr("class", "modal-content");
+        drinksModalHeaderEl.attr("class", "modal-header");
+        drinksModalTitleEl.attr("class", "modal-title fs-5");
+        drinksModalTitleEl.attr("id", `exampleDrinksModal${i}Label`);
+        drinksModalTitleEl.text(data.drinks[i].strDrink);
+        drinksModalHeaderButtonEl.attr("type", "button");
+        drinksModalHeaderButtonEl.attr("class", "btn-close");
+        drinksModalHeaderButtonEl.attr("data-bs-dismiss", "modal");
+        drinksModalHeaderButtonEl.attr("aria-label", "Close");
+        drinksModalBodyEl.attr("class", "modal-body");
+        drinksModalFooterEl.attr("class", "modal-footer");
+        drinksModalFooterButtonEl.attr("type", "button");
+        drinksModalFooterButtonEl.attr("class", "btn btn-secondary");
+        drinksModalFooterButtonEl.attr("data-bs-dismiss", "modal");
+
+        modalTargetEl.append(drinksModalEl);
+        drinksModalFooterEl.append(drinksModalFooterButtonEl);
+        drinksModalHeaderEl.append(drinksModalTitleEl);
+        drinksModalHeaderEl.append(drinksModalHeaderButtonEl);
+        drinksModalContentEl.append(drinksModalHeaderEl);
+        drinksModalContentEl.append(drinksModalBodyEl);
+        drinksModalContentEl.append(drinksModalFooterEl);
+        drinksModalDialogEl.append(drinksModalContentEl);
+        drinksModalEl.append(drinksModalDialogEl);
 
         drinkModalPEl.append(drinkModalAEl);
         drinksEl.append(drinkThumbnailEl);
         drinksEl.append(drinkTitleEl);
         drinksEl.append(drinkModalPEl);
         drinkContainer.append(drinksEl);
-        // receiptContainer.append(modalDrinksEl);
 
-        // createDrinksModalElements(drinkUrl, modalDrinksEl);
+        createDrinksModalElements(drinkUrl, drinksModalBodyEl);
       }
     });
 }
