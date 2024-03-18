@@ -36,10 +36,31 @@ The application is deployed in github, here is a link to the repo: https://githu
 I have attached photos below that outline different aspects of the product.
 To select an ingredient item simply start typing and choose one of the listed items. Once selected you will see meals populated in the carosel and drinks below. When a recipie looks enticing click the see recipie button to view the details in a modal. If you would like to save that recipie for later click the favorite button. You can find your saved recipies at the bottom of the page
 
+![alt text](recipe-sifting-repo/perfect-pair-screenshot/Screenshot 2024-03-18 at 2.53.21 PM.png)
+![alt text](recipe-sifting-repo/perfect-pair-screenshot/Screenshot 2024-03-18 at 2.53.31 PM.png)
+![alt text](recipe-sifting-repo/perfect-pair-screenshot/Screenshot 2024-03-18 at 2.53.41 PM.png)
+![alt text](recipe-sifting-repo/perfect-pair-screenshot/Screenshot 2024-03-18 at 2.54.11 PM.png)
+![alt text](recipe-sifting-repo/perfect-pair-screenshot/Screenshot 2024-03-18 at 2.54.23 PM.png)
+![alt text](recipe-sifting-repo/perfect-pair-screenshot/Screenshot 2024-03-18 at 2.54.35 PM.png)
+
+Website URL: https://oh-shift.github.io/recipe-sifting-repo/
+https://oh-shift.github.io/recipe-sifting-repo/main.html
+https://github.com/oh-shift/recipe-sifting-repo
+
+## Future Development
+
+Having a refresh on the search
+Way to remove a favorite from local storage
+Add a local storage item for the drink recipe
+Remove stock photo from the start of the Modal
+Adding conversions from metric measurements
+Adding a light dark mode
+Have Favorites added when you click automatically
+
 ## Credits
 
 The Team consisted of:
-Tyler Myers: https://github.com/Meyerst19
+Tyler Meyers: https://github.com/Meyerst19
 Mike DeDomenic: https://github.com/mikededo58
 Anthony MartinL https://github.com/Amartin02
 Giordan Thompson: https://github.com/GiorDior
@@ -48,3 +69,6 @@ Phyllis Lataille: https://github.com/lavendarqueen
 With Guidance from:
 Ben Machock: https://github.com/benjaminmachock
 Casey: https://github.com/CaseySMiller
+
+Background Image by Davey Gravy:
+https://unsplash.com/photos/sliced-pizza-on-brown-wooden-chopping-board-d-tWHUbuEcY?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash
