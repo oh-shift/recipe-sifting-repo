@@ -5,7 +5,7 @@ const ingredientsListUrl =
 let ingredients = [];
 const receiptContainer = $("#receiptContainer");
 const cocktailInputEL = $("#cocktailSearchInput");
-const cocktailSearchEl = $("#Cocktail");
+// const cocktailSearchEl = $("#cocktail");
 const cocktailListUrl =
   "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list";
 let drinkIngredients = [];
@@ -186,7 +186,16 @@ function handleSearch(event) {
         const favoriteDivEl = $("<div>");
         const favoriteEl = $("<input>");
         const favoriteLabelEl = $("<label>");
+        const indicatorButton = $("<button>");
+        const indicatorTarget = $(".carousel-indicators");
+        const previousSearchEls = $(`#index${i}`);
 
+        indicatorButton.attr("type", "button");
+        indicatorButton.attr("data-bs-target", "#myCarousel");
+        indicatorButton.attr("data-bs-slide-to", `${i + 1}`);
+        indicatorButton.attr("aria-label", `Slide ${i + 2}`);
+
+        previousSearchEls.remove();
         receiptsEl.attr("class", "carousel-item");
         receiptsEl.attr("id", `index${i}`);
         favoriteDivEl.attr("class", "btn-group");
@@ -234,6 +243,7 @@ function handleSearch(event) {
         modalFooterButtonEl.attr("class", "btn btn-secondary");
         modalFooterButtonEl.attr("data-bs-dismiss", "modal");
 
+        indicatorTarget.append(indicatorButton);
         modalButtonPEl.append(modalButtonAEl);
         favoriteDivEl.append(favoriteEl);
         favoriteDivEl.append(favoriteLabelEl);
@@ -295,6 +305,8 @@ function handleSearch(event) {
 
         const drinkUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${data.drinks[i].idDrink}`;
 
+        drinkContainer.text("");
+
         drinksEl.attr("class", "col-lg-4");
         drinkThumbnailEl.attr("src", data.drinks[i].strDrinkThumb);
         drinkThumbnailEl.attr("class", "img_drink");
@@ -350,6 +362,9 @@ function handleSearch(event) {
         createDrinksModalElements(drinkUrl, drinksModalBodyEl);
       }
     });
+
+  searchInputEl.val("");
+  cocktailInputEL.val("");
 }
 
 // this appears to be working
