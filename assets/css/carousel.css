@@ -58,7 +58,7 @@ body {
   height: 140px;
 }
 
-.img_recipe {
+#mainImage {
   /* display: block; */
   width: 100%;
   height: 100%;
