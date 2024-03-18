@@ -374,7 +374,7 @@ function createCocktailList() {
 
 function loadMainImage() {
   const images = [
-    "./assets/images/davey-gravy-d-tWHUbuEcY-unsplash.jpg",
+    // "./assets/images/davey-gravy-d-tWHUbuEcY-unsplash.jpg",
     "./assets/images/louis-hansel-phEaeqe555M-unsplash.jpg",
     "./assets/images/suad-kamardeen-3lnsCAQm23U-unsplash.jpg",
     "./assets/images/charlotte-karlsen-DAih2b5MFcA-unsplash.jpg",
