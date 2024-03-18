@@ -16,6 +16,65 @@ let chosenF = JSON.parse(localStorage.getItem("chosenFood"));
 if (chosenF === null) {
   chosenF = [];
 }
+const favoriteTargetEl = $("#favoritesTarget");
+
+function createFavorites(chosenF) {
+  for (i = 0; i < chosenF.length; i++) {
+    const favoriteMealUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${chosenF[i]}`;
+
+    fetch(favoriteMealUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+        const breakEl = $("<hr>");
+        const favoriteDivEl = $("<div>");
+        const favoriteInnerDivAEl = $("<div>");
+        const favoriteInnerDivBEl = $("<div>");
+        const favoriteH2El = $("<h2>");
+        const favoritePEl = $("<div>");
+        const ingredientsListEl = $("<ul>");
+        const instructionsEl = $("<p>");
+        const favoriteImgEl = $("<img>");
+
+        breakEl.attr("class", "featurette-divider");
+        favoriteDivEl.attr("class", "row featurette");
+        favoriteInnerDivAEl.attr("class", "col-md-7");
+        favoriteInnerDivBEl.attr("class", "col-md-5");
+        favoriteH2El.attr("class", "featurette-heading fw-normal lh-1");
+        favoriteH2El.text(data.meals[0].strMeal);
+        favoritePEl.attr("class", "lead");
+
+        for (i = 1; i < 21; i++) {
+          const measurementText = `strMeasure${i}`;
+          const ingredientText = `strIngredient${i}`;
+          const valMeasurementText = data.meals[0][measurementText];
+          const valIngredientText = data.meals[0][ingredientText];
+
+          if (valIngredientText !== "" && valIngredientText !== null) {
+            const ingredientLi = $("<li>");
+            ingredientLi.text(`${valMeasurementText} ${valIngredientText}`);
+            ingredientsListEl.append(ingredientLi);
+          }
+        }
+        instructionsEl.text(data.meals[0].strInstructions);
+        favoriteImgEl.attr("class", "img_favorites");
+        favoriteImgEl.attr("src", data.meals[0].strMealThumb);
+        favoriteImgEl.attr("alt", data.meals[0].strMeal);
+
+        favoritePEl.append(ingredientsListEl);
+        favoritePEl.append(instructionsEl);
+        favoriteInnerDivBEl.append(favoriteImgEl);
+        favoriteInnerDivAEl.append(favoriteH2El);
+        favoriteInnerDivAEl.append(favoritePEl);
+        favoriteDivEl.append(favoriteInnerDivAEl);
+        favoriteDivEl.append(favoriteInnerDivBEl);
+        favoriteTargetEl.append(favoriteDivEl);
+        favoriteTargetEl.append(breakEl);
+      });
+  }
+}
 
 function createDrinksModalElements(drinkUrl, drinksModalBodyEl) {
   fetch(drinkUrl)
@@ -127,7 +186,6 @@ function handleSearch(event) {
         const favoriteDivEl = $("<div>");
         const favoriteEl = $("<input>");
         const favoriteLabelEl = $("<label>");
-        const checkbox = $(`#btncheck${i}`);
 
         receiptsEl.attr("class", "carousel-item");
         receiptsEl.attr("id", `index${i}`);
@@ -250,7 +308,6 @@ function handleSearch(event) {
         drinkModalAEl.attr("class", "btn btn-secondary");
         drinkModalAEl.attr("href", "#");
         drinkModalAEl.attr("data-bs-toggle", "modal");
-        drinkModalAEl.attr("data-bs-target", "#exampleModal");
         drinkModalAEl.text("View Details");
 
         drinksModalEl.attr("class", "modal fade");
@@ -366,3 +423,4 @@ createCocktailList();
 // cocktailSearchEl.on("click", handleCocktailSearch); // waiting to complete function
 createIngredientsList();
 searchEl.on("click", handleSearch);
+createFavorites(chosenF);
