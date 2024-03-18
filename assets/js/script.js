@@ -301,6 +301,20 @@ function createCocktailList() {
     });
 }
 
+function loadMainImage() {
+  const images = [
+    "./assets/images/davey-gravy-d-tWHUbuEcY-unsplash.jpg",
+    "./assets/images/louis-hansel-phEaeqe555M-unsplash.jpg",
+    "./assets/images/suad-kamardeen-3lnsCAQm23U-unsplash.jpg",
+    "./assets/images/charlotte-karlsen-DAih2b5MFcA-unsplash.jpg",
+    "./assets/images/davide-cantelli-jpkfc5_d-DI-unsplash.jpg",
+  ];
+
+  const mainImage = document.getElementById("mainImage");
+  const randomIndex = Math.floor(Math.random() * images.length);
+  mainImage.src = images[randomIndex];
+}
+
 // This function needs work still
 //commented out after adding to main search
 // function handleCocktailSearch(event) {
@@ -332,6 +346,7 @@ function createCocktailList() {
 //     });
 // }
 
+loadMainImage();
 createCocktailList();
 //commented out after adding to main search
 // cocktailSearchEl.on("click", handleCocktailSearch); // waiting to complete function
