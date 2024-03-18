@@ -39,7 +39,7 @@ To select an ingredient item simply start typing and choose one of the listed it
 ## Credits
 
 The Team consisted of:
-Tyler Myers: https://github.com/Meyerst19
+Tyler Meyers: https://github.com/Meyerst19
 Mike DeDomenic: https://github.com/mikededo58
 Anthony MartinL https://github.com/Amartin02
 Giordan Thompson: https://github.com/GiorDior
