@@ -12,6 +12,10 @@ let drinkIngredients = [];
 const landingPageEl = $("#origin");
 const drinkContainer = $("#drinkContainer");
 const modalTargetEl = $("#modalTarget");
+let chosenF = JSON.parse(localStorage.getItem("chosenFood"));
+if (chosenF === null) {
+  chosenF = [];
+}
 
 function createDrinksModalElements(drinkUrl, drinksModalBodyEl) {
   fetch(drinkUrl)
@@ -123,6 +127,7 @@ function handleSearch(event) {
         const favoriteDivEl = $("<div>");
         const favoriteEl = $("<input>");
         const favoriteLabelEl = $("<label>");
+        const checkbox = $(`#btncheck${i}`);
 
         receiptsEl.attr("class", "carousel-item");
         receiptsEl.attr("id", `index${i}`);
@@ -194,6 +199,15 @@ function handleSearch(event) {
         receiptsEl.removeClass("active");
 
         createModalElements(mealUrl, modalBodyEl);
+
+        favoriteEl.on("change", myFavorites);
+        function myFavorites(event) {
+          console.log(event);
+          console.log(event.target.dataset.mealid);
+          const chosenFood = [event.target.dataset.mealid];
+          chosenF.push(chosenFood);
+          localStorage.setItem("chosenFood", JSON.stringify(chosenF));
+        }
       }
       landingPageEl.removeClass("active");
       const redirectEl = $("#index0");
