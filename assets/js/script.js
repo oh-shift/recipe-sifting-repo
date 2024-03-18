@@ -308,7 +308,6 @@ function handleSearch(event) {
         drinkModalAEl.attr("class", "btn btn-secondary");
         drinkModalAEl.attr("href", "#");
         drinkModalAEl.attr("data-bs-toggle", "modal");
-        drinkModalAEl.attr("data-bs-target", "#exampleModal");
         drinkModalAEl.text("View Details");
 
         drinksModalEl.attr("class", "modal fade");
