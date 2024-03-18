@@ -3,12 +3,16 @@ html {
 }
 
 body {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   background-image: url("../images/davey-gravy-d-tWHUbuEcY-unsplash-reduced.jpg");
 }
 
 .mt-5 {
   font-size: 5rem;
-  color: darkgreen;
+  color: white;
   font-weight: bold;
 }
 main {
@@ -46,4 +50,34 @@ p {
   font-size: 4rem;
   font-weight: bold;
   margin-top: 4rem;
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+  body {
+    background-image: url("../images/davey-gravy-d-tWHUbuEcY-unsplash-desktop1400.jpg");
+  }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  body {
+    background-image: url("../images/davey-gravy-d-tWHUbuEcY-unsplash-desktop1200.jpg");
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  body {
+    background-image: url("../images/davey-gravy-d-tWHUbuEcY-unsplash-tabletH992.jpg");
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  body {
+    background-image: url("../images/davey-gravy-d-tWHUbuEcY-unsplash-tabletV768.jpg");
+  }
+}
+
+@media screen and (min-width: 576px) {
+  body {
+    background-image: url("../images/davey-gravy-d-tWHUbuEcY-unsplash-mobile576.jpg");
+  }
 }
