@@ -202,7 +202,7 @@ function handleSearch(event) {
         favoriteLabelEl.attr("class", "btn btn-outline-primary");
         favoriteLabelEl.text("❤️");
         thumbnailEl.attr("src", data.meals[i].strMealThumb);
-        thumbnailEl.attr("class", "img_recipe");
+        thumbnailEl.attr("id", "mainImage");
         thumbnailEl.attr("alt", data.meals[i].strMeal);
         innerReceiptsEl.attr("class", "container");
         innerInnerReceiptsEl.attr("class", "carousel-caption text-start");
