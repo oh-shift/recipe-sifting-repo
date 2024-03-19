@@ -286,6 +286,8 @@ function handleSearch(event) {
       return response.json();
     })
     .then(function (data) {
+      drinkContainer.text("");
+
       for (let i = 0; i < data.drinks.length; i++) {
         const drinksEl = $("<div>");
         const drinkTitleEl = $("<h2>");
@@ -304,8 +306,6 @@ function handleSearch(event) {
         const drinksModalFooterButtonEl = $("<button>");
 
         const drinkUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${data.drinks[i].idDrink}`;
-
-        drinkContainer.text("");
 
         drinksEl.attr("class", "col-lg-4");
         drinkThumbnailEl.attr("src", data.drinks[i].strDrinkThumb);
